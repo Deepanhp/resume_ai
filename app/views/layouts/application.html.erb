@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Resume AI Customizer</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= yield :head %>
+
+    <%# Enable PWA manifest for installable apps (make sure to enable in config/routes.rb too!) %>
+    <%#= tag.link rel: "manifest", href: pwa_manifest_path(format: :json) %>
+
+    <link rel="icon" href="/icon.png" type="image/png">
+    <link rel="icon" href="/icon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="/icon.png">
+    <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
+
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+  </head>
+
+  <body class="bg-gray-100">
+    <nav class="bg-white shadow-lg">
+      <div class="max-w-7xl mx-auto px-4">
+        <div class="flex justify-between h-16">
+          <div class="flex">
+            <%= link_to "Resume AI", root_path, class: "flex items-center text-xl font-bold text-indigo-600" %>
+          </div>
+          
+          <div class="flex items-center">
+            <% if user_signed_in? %>
+              <%= link_to "My Applications", job_applications_path, class: "mr-4 text-gray-600 hover:text-gray-900" %>
+              <%= button_to "Sign Out", destroy_user_session_path, method: :delete, class: "text-gray-600 hover:text-gray-900" %>
+            <% else %>
+              <%= link_to "Sign In", new_user_session_path, class: "text-gray-600 hover:text-gray-900" %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <% if notice %>
+      <div class="max-w-7xl mx-auto px-4 mt-4">
+        <div class="bg-green-50 p-4 rounded-md">
+          <p class="text-green-800"><%= notice %></p>
+        </div>
+      </div>
+    <% end %>
+
+    <% if alert %>
+      <div class="max-w-7xl mx-auto px-4 mt-4">
+        <div class="bg-red-50 p-4 rounded-md">
+          <p class="text-red-800"><%= alert %></p>
+        </div>
+      </div>
+    <% end %>
+
+    <main>
+      <%= yield %>
+    </main>
+  </body>
+</html>

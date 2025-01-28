@@ -1,0 +1,30 @@
+<div class="max-w-2xl mx-auto mt-8 p-6 bg-white rounded-lg shadow">
+  <h1 class="text-2xl font-bold mb-6">Customize Your Resume</h1>
+
+  <%= form_with(model: @job_application, local: true, class: "space-y-6") do |f| %>
+    <% if @job_application.errors.any? %>
+      <div class="bg-red-50 p-4 rounded-md">
+        <h2 class="text-red-800 text-sm font-medium">
+          <%= pluralize(@job_application.errors.count, "error") %> prohibited this application from being saved:
+        </h2>
+        <ul class="mt-2 text-red-700 text-sm">
+          <% @job_application.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div>
+      <%= f.label :job_url, "Job Posting URL", class: "block text-sm font-medium text-gray-700" %>
+      <%= f.text_field :job_url, class: "mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500" %>
+    </div>
+
+    <div>
+      <%= f.label :original_resume, "Upload Your Resume", class: "block text-sm font-medium text-gray-700" %>
+      <%= f.file_field :original_resume, class: "mt-1 block w-full", accept: ".pdf,.doc,.docx" %>
+    </div>
+
+    <%= f.submit "Customize Resume", class: "w-full py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" %>
+  <% end %>
+</div> 

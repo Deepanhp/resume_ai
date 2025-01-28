@@ -1,0 +1,42 @@
+<%= turbo_frame_tag "job_applications", data: { controller: "auto-refresh" } do %>
+  <div class="max-w-7xl mx-auto mt-8 px-4">
+    <div class="flex justify-between items-center mb-6">
+      <h1 class="text-2xl font-bold">Your Job Applications</h1>
+      <%= link_to "New Application", new_job_application_path, class: "px-4 py-2 bg-indigo-600 text-white rounded-md hover:bg-indigo-700" %>
+    </div>
+
+    <div class="bg-white shadow overflow-hidden sm:rounded-md">
+      <ul role="list" class="divide-y divide-gray-200">
+        <% @job_applications.each do |application| %>
+          <li>
+            <%= link_to job_application_path(application), class: "block hover:bg-gray-50" do %>
+              <div class="px-4 py-4 sm:px-6">
+                <div class="flex items-center justify-between">
+                  <div class="truncate">
+                    <p class="font-medium text-indigo-600 truncate"><%= application.job_url %></p>
+                    <div class="mt-2 flex">
+                      <div class="flex items-center text-sm text-gray-500">
+                        <span class="<%= status_color(application.status) %>">
+                          Status: <%= application.status.titleize %>
+                        </span>
+                        <span class="ml-2 text-gray-500">
+                          Submitted: <%= time_ago_in_words(application.created_at) %> ago
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="ml-2 flex-shrink-0 flex">
+                    <% if application.customized_resume.attached? %>
+                      <%= link_to "Download Resume", rails_blob_path(application.customized_resume, disposition: "attachment"), 
+                          class: "font-medium text-indigo-600 hover:text-indigo-500" %>
+                    <% end %>
+                  </div>
+                </div>
+              </div>
+            <% end %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+<% end %> 
