@@ -1,24 +1,15 @@
-# README
+# 📝 ResumeMatch AI: Tailor Your Resume to Job Applications!
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+**ResumeMatch AI** is a powerful web application that optimizes your resume for specific job applications. Simply upload your resume and provide the job application link, and the app will generate the best version of your resume, tailored to the job’s requirements.
 
-Things you may want to cover:
+## 🚀 Features
+- **Resume Upload**: Easily upload your current resume in various formats (PDF, DOCX, etc.).
+- **Job Application Integration**: Provide a job application link for automated content extraction.
+- **AI-Powered Resume Optimization**: The app analyzes the job description and tailors your resume to highlight relevant skills, experience, and keywords.
+- **Download and Share**: Get a downloadable, optimized version of your resume ready to submit.
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## 🛠️ How It Works
+1. Upload your current resume to the app.
+2. Paste the link to the job application or provide the job description.
+3. The app analyzes the job description and optimizes your resume for that specific role.
+4. Download the tailored resume and apply with confidence!
