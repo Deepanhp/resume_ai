@@ -121,6 +121,7 @@ GEM
     erubi (1.13.1)
     et-orbi (1.2.11)
       tzinfo
+    event_stream_parser (1.0.0)
     faraday (2.12.2)
       faraday-net_http (>= 2.0, < 3.5)
       json
@@ -153,7 +154,7 @@ GEM
     jbuilder (2.13.0)
       actionview (>= 5.0.0)
       activesupport (>= 5.0.0)
-    json (2.9.1)
+    json (2.10.1)
     kamal (2.4.0)
       activesupport (>= 7.0)
       base64 (~> 0.2)
@@ -328,7 +329,8 @@ GEM
       rubocop-minitest
       rubocop-performance
       rubocop-rails
-    ruby-openai (4.3.2)
+    ruby-openai (7.4.0)
+      event_stream_parser (>= 0.3.0, < 2.0.0)
       faraday (>= 1)
       faraday-multipart (>= 1)
     ruby-progressbar (1.13.0)
